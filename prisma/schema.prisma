@@ -1,0 +1,70 @@
+// Prisma schema for Jarvis - CME internal ops cockpit
+// SQLite for local dev; swap provider + DATABASE_URL for Postgres in production
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Chat / Conversation ─────────────────────────────────────────────────────
+
+model Conversation {
+  id        String    @id @default(cuid())
+  title     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  role           String       // "user" | "assistant" | "tool"
+  content        String
+  toolName       String?      // set when role = "tool"
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
+
+// ─── Approval / Action Model ─────────────────────────────────────────────────
+
+model ProposedAction {
+  id        String   @id @default(cuid())
+  agent     String   // e.g. "support", "ads"
+  type      String   // e.g. "SEND_REPLY", "CHANGE_BUDGET"
+  summary   String   // human-readable description
+  payload   String   // JSON blob
+  status    String   @default("pending") // pending | approved | rejected | executed
+  notes     String?  // operator notes on approve/reject
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Daily Briefing Cache (text data) ────────────────────────────────────────
+
+model DailyBriefing {
+  id          String   @id @default(cuid())
+  date        String   @unique  // YYYY-MM-DD
+  content     String   // JSON blob of briefing data
+  generatedAt DateTime @default(now())
+}
+
+// ─── Spoken Briefing (audio + script) ────────────────────────────────────────
+
+model SpokenBriefing {
+  id         String   @id @default(cuid())
+  date       String   @unique  // YYYY-MM-DD
+  scriptText String?           // plain-text spoken script from Claude
+  audioPath  String?           // absolute fs path to audio file
+  mimeType   String?           // audio/wav | audio/mpeg
+  provider   String?           // stub | openai | elevenlabs
+  voice      String?           // provider-specific voice name/id
+  status     String   @default("generating") // generating | ready | failed
+  error      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

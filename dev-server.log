@@ -1,0 +1,65 @@
+
+> cme-jarvis@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.7 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.2:3000
+- Environments: .env.local
+✓ Ready in 666ms
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+[instrumentation] Daily briefing cron scheduled at 01:00 America/New_York
+
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /ads?tab=meta 200 in 3.9s (next.js: 1790ms, proxy.ts: 172ms, application-code: 1966ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /api/ads/meta/timeseries?days=7 200 in 3.4s (next.js: 3.0s, proxy.ts: 6ms, application-code: 402ms)
+ POST /api/auth/login 200 in 62ms (next.js: 46ms, proxy.ts: 6ms, application-code: 10ms)
+ GET /api/ads/meta/timeseries?days=7 200 in 752ms (next.js: 13ms, proxy.ts: 5ms, application-code: 734ms)
+ GET /api/ads/google/timeseries?days=7 200 in 19ms (next.js: 7ms, proxy.ts: 5ms, application-code: 6ms)
+ GET /api/metrics/timeseries?days=7 200 in 382ms (next.js: 36ms, proxy.ts: 5ms, application-code: 342ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ POST /api/auth/login 200 in 24ms (next.js: 3ms, proxy.ts: 4ms, application-code: 16ms)
+ GET /ads?tab=google 200 in 118ms (next.js: 4ms, proxy.ts: 4ms, application-code: 110ms)
+ GET /ads?tab=meta 200 in 1193ms (next.js: 5ms, proxy.ts: 6ms, application-code: 1181ms)
+ GET /dashboard 200 in 1596ms (next.js: 69ms, proxy.ts: 5ms, application-code: 1522ms)
+ GET /ads?tab=google 200 in 46ms (next.js: 4ms, proxy.ts: 5ms, application-code: 36ms)
+ GET /api/ads/google/timeseries?days=7 200 in 21ms (next.js: 11ms, proxy.ts: 4ms, application-code: 6ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /dashboard 200 in 1110ms (next.js: 4ms, proxy.ts: 3ms, application-code: 1103ms)
+ GET /api/metrics/timeseries?days=7 200 in 596ms (next.js: 3ms, proxy.ts: 4ms, application-code: 588ms)
+ GET /api/metrics/timeseries?days=7 200 in 316ms (next.js: 2ms, proxy.ts: 3ms, application-code: 310ms)
+ GET /chat 200 in 51ms (next.js: 26ms, proxy.ts: 3ms, application-code: 21ms)
+ GET /ads 200 in 930ms (next.js: 3ms, proxy.ts: 4ms, application-code: 923ms)
+ GET /ads?tab=google 200 in 36ms (next.js: 4ms, proxy.ts: 4ms, application-code: 28ms)
+ GET /api/ads/google/timeseries?days=7 200 in 19ms (next.js: 11ms, proxy.ts: 4ms, application-code: 5ms)
+ GET /api/ads/google/timeseries?days=7 200 in 16ms (next.js: 4ms, proxy.ts: 7ms, application-code: 4ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /ads?tab=meta 200 in 925ms (next.js: 3ms, proxy.ts: 4ms, application-code: 918ms)
+ GET /api/ads/meta/timeseries?days=7 200 in 319ms (next.js: 11ms, proxy.ts: 4ms, application-code: 305ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /login?from=%2F 200 in 75ms (next.js: 30ms, proxy.ts: 6ms, application-code: 39ms)
+ GET /login?from=%2F 200 in 45ms (next.js: 3ms, proxy.ts: 3ms, application-code: 39ms)
+ POST /api/auth/login 200 in 26ms (next.js: 2ms, proxy.ts: 4ms, application-code: 20ms)
+ GET / 200 in 46ms (next.js: 24ms, proxy.ts: 4ms, application-code: 17ms)
+ GET / 200 in 19ms (next.js: 3ms, proxy.ts: 3ms, application-code: 13ms)
+ GET /dashboard 200 in 1007ms (next.js: 5ms, proxy.ts: 5ms, application-code: 998ms)
+ GET /dashboard 200 in 1160ms (next.js: 4ms, proxy.ts: 4ms, application-code: 1152ms)
+ GET /api/metrics/timeseries?days=7 200 in 441ms (next.js: 7ms, proxy.ts: 4ms, application-code: 430ms)
+ GET /api/metrics/timeseries?days=7 200 in 668ms (next.js: 3ms, proxy.ts: 3ms, application-code: 662ms)
+ GET /ads 200 in 1306ms (next.js: 3ms, proxy.ts: 3ms, application-code: 1300ms)
+ GET /ads?tab=google 200 in 50ms (next.js: 3ms, proxy.ts: 4ms, application-code: 43ms)
+ GET /api/ads/google/timeseries?days=7 200 in 36ms (next.js: 24ms, proxy.ts: 4ms, application-code: 8ms)
+ GET /api/ads/google/timeseries?days=7 200 in 16ms (next.js: 6ms, proxy.ts: 5ms, application-code: 5ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /ads?tab=meta 200 in 1007ms (next.js: 3ms, proxy.ts: 3ms, application-code: 1000ms)
+ GET /api/ads/meta/timeseries?days=7 200 in 337ms (next.js: 13ms, proxy.ts: 4ms, application-code: 320ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /ads?tab=google 200 in 42ms (next.js: 3ms, proxy.ts: 6ms, application-code: 33ms)
+ GET /api/ads/google/timeseries?days=7 200 in 28ms (next.js: 11ms, proxy.ts: 7ms, application-code: 10ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+ GET /ads?tab=meta 200 in 1235ms (next.js: 4ms, proxy.ts: 4ms, application-code: 1226ms)
+ GET /api/ads/meta/timeseries?days=7 200 in 1533ms (next.js: 15ms, proxy.ts: 6ms, application-code: 1512ms)
+[ADS] google=stub  meta=real  ← missing GOOGLE_ADS_REFRESH_TOKEN
+[?25h
