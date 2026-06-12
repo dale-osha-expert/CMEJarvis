@@ -1,35 +1,23 @@
 /**
- * Next.js proxy (auth gate) — redirects unauthenticated requests to /login.
- * Runs on every request except static files and the login/api-login routes.
- * Named "proxy.ts" per Next.js 16+ convention (was "middleware.ts" in prior versions).
+ * ⚠️  AUTHENTICATION INTENTIONALLY REMOVED
+ *
+ * This app is UNAUTHENTICATED at the application layer.
+ * It MUST be protected at the network layer before any remote or shared hosting:
+ *   - SSO / identity-aware proxy (e.g. Cloudflare Access, Google IAP, Authelia)
+ *   - Reverse proxy with HTTP Basic Auth (nginx, Caddy)
+ *   - VPN / firewall allowlist restricting access to trusted IPs only
+ *
+ * WARNING: This app holds live Google Ads + Meta Ads API tokens and can
+ * trigger paid TTS generation. Do NOT expose it to the public internet
+ * without a network-layer auth gate in front of it.
+ *
+ * The only application-level gate that remains is POST /api/cron/daily-briefing,
+ * which requires a valid X-Cron-Secret header to prevent unauthenticated
+ * triggering of paid TTS generation from external callers.
  */
 import { NextRequest, NextResponse } from "next/server";
 
-const PUBLIC_PATHS = [
-  "/login",
-  "/api/auth/login",
-  "/api/cron/",      // protected by X-Cron-Secret header inside the route — no cookie needed for cron jobs
-];
-
-export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Allow public paths and Next.js internals
-  if (
-    PUBLIC_PATHS.some((p) => pathname.startsWith(p)) ||
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/favicon")
-  ) {
-    return NextResponse.next();
-  }
-
-  const session = request.cookies.get("jarvis_session");
-  if (session?.value !== "authenticated") {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("from", pathname);
-    return NextResponse.redirect(loginUrl);
-  }
-
+export function proxy(_request: NextRequest) {
   return NextResponse.next();
 }
 

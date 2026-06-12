@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 // PARKED — Support and Approvals are fully implemented (lib/adapters/support, lib/agents/support,
@@ -20,13 +20,6 @@ const NAV_ITEMS = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const router = useRouter();
-
-  async function handleLogout() {
-    await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/login");
-    router.refresh();
-  }
 
   return (
     <nav className="w-56 min-h-screen bg-slate-800 border-r border-slate-700 flex flex-col">
@@ -60,15 +53,6 @@ export default function Nav() {
             )}
           </div>
         ))}
-      </div>
-
-      <div className="p-4 border-t border-slate-700">
-        <button
-          onClick={handleLogout}
-          className="w-full text-left text-sm text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-slate-700"
-        >
-          Sign out
-        </button>
       </div>
     </nav>
   );

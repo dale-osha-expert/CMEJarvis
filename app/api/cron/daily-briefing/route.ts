@@ -4,8 +4,9 @@
  * Triggers spoken briefing generation for today (or a given ?date=YYYY-MM-DD).
  * Idempotent: skips if already ready unless ?force=true.
  *
- * Auth: either a valid session cookie (for UI triggers) OR X-Cron-Secret header
- * (for external OS cron jobs/curl — no session cookie required).
+ * Auth: X-Cron-Secret header only. This is the sole application-level gate
+ * remaining after login was removed — it prevents unauthenticated external
+ * callers from triggering paid TTS generation.
  *
  * Example cron job (Linux/Mac, runs at 1 AM ET):
  *   0 1 * * * curl -s -X POST "https://your-server/api/cron/daily-briefing" \
@@ -19,15 +20,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { triggerBriefingGeneration } from "@/lib/spoken-briefing";
 
 export async function POST(request: NextRequest) {
-  // Auth: X-Cron-Secret header OR valid session cookie
   const cronSecret = request.headers.get("x-cron-secret");
-  const sessionCookie = request.cookies.get("jarvis_session");
   const envSecret = process.env.CRON_SECRET;
 
-  const isCronAuthed = envSecret && cronSecret === envSecret;
-  const isCookieAuthed = sessionCookie?.value === "authenticated";
-
-  if (!isCronAuthed && !isCookieAuthed) {
+  if (!envSecret || cronSecret !== envSecret) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
