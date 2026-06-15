@@ -2,6 +2,7 @@ import { analyticsAgent } from "./analytics.agent";
 import { supportAgent } from "./support.agent";
 import { adsAgent } from "./ads.agent";
 import { researchAgent } from "./research.agent";
+import { trafficAgent } from "./traffic.agent";
 import { contentAgent } from "./content.agent";
 import { devAgent } from "./dev.agent";
 import type { Agent } from "./types";
@@ -11,6 +12,7 @@ export const ALL_AGENTS: Agent[] = [
   supportAgent,
   adsAgent,
   researchAgent,
+  trafficAgent,
   contentAgent,
   devAgent,
 ];

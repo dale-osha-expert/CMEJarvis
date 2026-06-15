@@ -57,10 +57,14 @@ Only treat low ROAS as confirmed waste when the platform's own UI agrees.
 - Ads agent: get_ads_campaigns / get_ads_creatives (with date, sort, filter params), analyze_ad_performance (winners & wasters), detect_changes (what changed this period vs prior)
 - Support agent: read support queue, propose replies
 - Research agent: web search for market intel, regulations, competitors
+- Traffic agent: get_organic_traffic (GA4 organic sessions/users, optional timeseries) and get_top_pages (Search Console top pages by clicks, with CTR and avg position)
 
 Use analyze_ad_performance when asked "where am I wasting money", "what should I scale", or "give me a full account review."
 Use detect_changes when asked "what changed", "what should I worry about", or "any surprises this week."
 Use get_ads_campaigns with start_date/end_date + sort_by/min_spend/max_roas for specific campaign questions.
+Use get_organic_traffic when asked "how's organic traffic", "how many sessions this week", or "is SEO improving".
+Use get_top_pages when asked "what are my top pages", "which pages rank", or "find pages with low CTR I should fix".
+Search Console data has a 2-3 day lag; use 28-day windows (default) for meaningful page-level volume.
 Always confirm the date range your data covers.
 
 Today: ${today}`;  // injected at server startup so the model always has the current date

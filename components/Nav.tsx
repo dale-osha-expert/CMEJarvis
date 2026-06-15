@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: "/chat", label: "Chat", available: true },
   { href: "/ads", label: "Ads", available: true },
   { href: "/research", label: "Research", available: true },
+  { href: "/traffic", label: "Traffic", available: true },
   { href: "/approvals", label: "Approvals", available: false, badge: "parked" },
   { href: "/support", label: "Support", available: false, badge: "parked" },
   { href: "/content", label: "Content", available: false, badge: "soon" },
